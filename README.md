@@ -52,7 +52,7 @@
 #### Benefits of the schema design
 
 1. **Flexibility**: Adding or removing categories only requires changes in `ExpenseCategory`.
-2. **Scalability**: Supports multiple quarters if adding a `quarter` column in `MonthlyExpenditure`.
+2. **Scalability**: Supports multiple quarters if adding a `quarter` column in `Expense`.
 3. **Efficiency**: Using IDs as primary and foreign keys simplifies joins and speeds up queries.
 4. **Analysis-Ready**: Easy to query monthly, annual, or category-based spending trends for each person.
    1. The data types of `year` and `month` are designed to be aggregated easily.

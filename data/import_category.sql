@@ -1,5 +1,5 @@
 LOAD DATA LOCAL INFILE './csv/ExpenseCategory.csv'
-INTO TABLE table_name
+INTO TABLE ExpenseCategory
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'

@@ -4,6 +4,46 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv("../data/init_data.csv")
 
+"""
+Query for Bar Chart Data
+SELECT 
+    u.user_id, 
+    u.name, 
+    u.age, 
+    u.gender, 
+    ec.category_name, 
+    SUM(e.amount) AS total_amount, 
+    e.month, 
+    e.year
+FROM 
+    User u
+JOIN 
+    Expense e ON u.user_id = e.user_id
+JOIN 
+    ExpenseCategory ec ON e.category_id = ec.category_id
+WHERE 
+    u.user_id = 1 
+    AND e.month = DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 MONTH), '%b')
+    AND e.year = YEAR(CURDATE())
+GROUP BY 
+    u.user_id, 
+    u.name, 
+    u.age, 
+    u.gender, 
+    ec.category_name, 
+    e.month, 
+    e.year;
++---------+-------+------+--------+----------------+--------------+-------+------+
+| user_id | name  | age  | gender | category_name  | total_amount | month | year |
++---------+-------+------+--------+----------------+--------------+-------+------+
+|       1 | Alice |   25 | F      | Housing        |      2089.70 | Oct   | 2024 |
+|       1 | Alice |   25 | F      | Dining         |       366.24 | Oct   | 2024 |
+|       1 | Alice |   25 | F      | Transportation |       433.55 | Oct   | 2024 |
+|       1 | Alice |   25 | F      | Utilities      |      2616.95 | Oct   | 2024 |
+|       1 | Alice |   25 | F      | Health         |      1426.47 | Oct   | 2024 |
+|       1 | Alice |   25 | F      | Entertainment  |      1156.07 | Oct   | 2024 |
++---------+-------+------+--------+----------------+--------------+-------+------+
+"""
 def bar_chart(data):
     # TODO 1: Connect script to SQL DB
     # TODO 2: Query for current USER ID and Prev Month Spendings
@@ -29,6 +69,38 @@ def bar_chart(data):
 
     print(data)
 
+"""
+Query for Line Chart Data
+SELECT 
+    e.month, 
+    SUM(e.amount) AS total_spendings
+FROM 
+    Expense e
+WHERE 
+    e.user_id = @user_id
+    AND e.year = YEAR(CURDATE())
+GROUP BY 
+    e.month
+ORDER BY 
+    STR_TO_DATE(e.month, '%b');
+
++-------+-----------------+
+| month | total_spendings |
++-------+-----------------+
+| Jan   |         4368.27 |
+| Feb   |         7907.13 |
+| Mar   |         3475.05 |
+| Apr   |         5396.50 |
+| May   |         9956.74 |
+| Jun   |         3220.29 |
+| Jul   |         5174.31 |
+| Aug   |         6366.75 |
+| Sep   |         5494.84 |
+| Oct   |         8088.98 |
+| Nov   |         3046.99 |
+| Dec   |         3803.97 |
++-------+-----------------+
+"""
 
 def line_chart():
     # TODO 1: Connect script to SQL DB

@@ -68,6 +68,3 @@ print(next_month_data[['category_id', 'category_name', 'predicted_amount']])
 def predict(user_id, expense_data, category_data):
     # I will implement this later
     pass
-
-def visualize():
-    pass

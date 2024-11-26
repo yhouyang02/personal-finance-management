@@ -8,9 +8,64 @@
   - Storage: Amazon S3
   - Computing: Amazon EC2, AWS Lambda
   - Database: Amazon RDS for MySQL
-- Machine learning: TensorFlow
-- Data processing & analysis: pandas
-- Data visualization:
+- Machine learning: scikit-learn
+- Data processing & analysis: NumPy, pandas
+- Data visualization: Matplotlib
+
+## Dependencies
+
+```text
+# <package>=<version>
+boto3=1.35.68
+matplotlib=3.9.2
+mysql-connector-python=9.1.0
+numpy=2.0.2
+pandas=2.2.3
+scikit-learn=1.5.2
+```
+
+## Usage
+
+The below actions can only be executed in the same VPC as the RDS instance locates. They are tested in an EC2 instance of Amazon Linux 2023.
+
+```text
+personal-finance-management/
+├── data/
+├── doc/
+├── src/
+│   ├── models/
+│   ├── temp/
+│   ├── cleanup.sh
+│   ├── load.py
+│   ├── predict.py
+│   ├── query.py
+│   └── visualize.py
+├── .gitignore
+├── README.md
+└── run
+```
+
+### Run each action on a user separately
+
+```bash
+cd src/
+```
+
+The `src` folder contains some executables:
+
+- (Q) To query user data from database: `python3 query.py -u <user_id>`
+- (P) To predict user's next month spending in each category: `python3 predict.py -u <user_id>`
+- (V) To visualize user's spending data: `python3 visualize.py`
+- (C) To clean up queried results: `./cleanup.sh`
+
+### Run all actions on a user through a single script
+
+The root folder contains the amazing script Q-Pick, which run each executables in sequence.
+> Q-Pick (QPVC) performs the series of actions Query-Predict-Visualize-Cleanup in order. 
+
+```bash
+./run -u <user_id>
+```
 
 ## How-To's
 
@@ -74,4 +129,4 @@
 
 ### How to manage costs of AWS services
 
-### How to ...
+### How to

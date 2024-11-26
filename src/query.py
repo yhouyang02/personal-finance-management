@@ -31,7 +31,7 @@ try:
         print(f"No data found for user ID {args.user_id}.")
     else:
         # Save the result to a CSV file
-        output_file = f"user_data_{args.user_id}.csv"
+        output_file = f"./temp/results.csv"
         with open(output_file, "w", newline="") as file:
             writer = csv.writer(file)
             writer.writerow([desc[0] for desc in cursor.description])  # Write header

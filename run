@@ -1,0 +1,7 @@
+#!/bin/bash
+# Perform action series Query-Predict-Visualize-Cleanup against a user
+# This action series is also known as QPVC (pronounced Q-Pick)
+# User ID is required from command line argument
+# Usage: ./run.sh -u <user_id>
+
+# TODO: to be implemented

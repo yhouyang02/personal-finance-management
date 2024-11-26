@@ -1,4 +1,4 @@
-from linear_regression import predict
+from ./models/linear_regression import predict
 
 EXPENSE_DATA_PATH = "./temp/results.csv"
 CATEGORY_DATA_PATH = "./../data/csv/ExpenseCategory.csv"

@@ -58,17 +58,16 @@ def upload_image_to_s3(file_path, bucket_name, s3_key=None):
         return False
 
 if __name__ == "__main__":
-    image_path = "./temp/figure.jpg"
     bucket_name = "chiabucket-3"
     
     success = upload_image_to_s3(
-        file_path=image_path,
+        file_path="./temp/figure_barchart.jpg",
         bucket_name=bucket_name,
-        s3_key="images/figure_barchart.jpg" 
+        s3_key="output/images/figure_barchart.jpg" 
     ) and upload_image_to_s3(
-        file_path=image_path,
+        file_path="./temp/figure_linechart.jpg",
         bucket_name=bucket_name,
-        s3_key="images/figure_linechart.jpg" 
+        s3_key="output/images/figure_linechart.jpg" 
     )
     
     if success:

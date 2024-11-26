@@ -22,7 +22,7 @@ try:
     cursor = connection.cursor()
 
     # Execute the query
-    query = "SELECT * FROM UserExpense WHERE user_id = %s"
+    query = "SELECT * FROM Expense WHERE user_id = %s"
     cursor.execute(query, (args.user_id,))
     rows = cursor.fetchall()
 

@@ -1,6 +1,7 @@
 import boto3
 import os
 
+@deprecated(version='1.0', reason="Data is now directly uploaded to RDS from S3")
 def download_from_s3(bucket_name, s3_file_key, local_file_name, aws_access_key, aws_secret_key, region='us-east-1'):
     """
     Download a file from S3 using AWS credentials
@@ -33,15 +34,13 @@ def download_from_s3(bucket_name, s3_file_key, local_file_name, aws_access_key, 
         print(f"Error downloading file: {str(e)}")
 
 if __name__ == "__main__":
-    # Your AWS credentials
     AWS_ACCESS_KEY = 'ASIA45Y2R7YF2GD3DFUW'
     AWS_SECRET_KEY = 'rBfLa0Fu6lVbcg3bnt716qwhOtSc1kJJh2FURl/X'
     
-    # Your S3 details
     BUCKET_NAME = "user-expenditure-data"
-    S3_FILE_KEY = "user_1_2022_241122024100.csv"  # e.g., "folder/data.csv"
+    S3_FILE_KEY = "user_1_2022_241122024100.csv"
     LOCAL_FILE_NAME = "user_1_2022_241122024100.csv"
-    REGION = "ca-central-1"  # Change to your bucket's region
+    REGION = "ca-central-1"
     
     download_from_s3(
         bucket_name=BUCKET_NAME,

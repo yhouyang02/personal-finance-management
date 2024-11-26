@@ -60,7 +60,7 @@ The `src` folder contains some executables:
 
 ### Run all actions on a user through a single script
 
-The root folder contains the amazing script Q-Pick, which run each executables in sequence.
+The root folder contains the amazing script Q-Pick, which run each executable in sequence.
 > Q-Pick (QPVC) performs the series of actions Query-Predict-Visualize-Cleanup in order. 
 
 ```bash

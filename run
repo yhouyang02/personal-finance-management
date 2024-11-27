@@ -16,12 +16,14 @@ done
 # Validate that uid was provided
 if [ -z "$uid" ]; then
     echo "Error: User ID (-u) is required"
-    echo "Usage: $0 -u <uid>"
+    echo "Usage: $0 -u <user_id>"
     exit 1
 fi
 
 # Execute commands in sequence
 echo "Starting workflow for user $uid..."
+
+cd src/
 
 echo "Running query..."
 python3 query.py -u "$uid" || { echo "Query failed"; exit 1; }

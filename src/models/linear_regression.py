@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
-def predict(user_id, expense_data_path, category_data_path):
+def predict(user_id, expense_data_path, category_data_path, output_file_path=None):
     # Load the data from CSV files
     expense_data = pd.read_csv(expense_data_path)
     category_data = pd.read_csv(category_data_path)

@@ -20,7 +20,6 @@ def predict(user_id, expense_data_path, category_data_path):
     expense_data = expense_data.sort_values(by=['user_id', 'year', 'month_num'])
 
     # Filter data for a specific user
-    user_id = 1  # Replace with desired user ID
     user_data = expense_data[expense_data['user_id'] == user_id]
 
     # Aggregate monthly expenses by category
@@ -57,8 +56,21 @@ def predict(user_id, expense_data_path, category_data_path):
     # Map category names and sort by category_id
     next_month_data['category_name'] = next_month_data['category_id'].map(category_mapping)
     next_month_data = next_month_data.sort_values(by='category_id')
+    
+    # Format output columns
+    output = next_month_data[['category_id', 'category_name', 'predicted_amount']]
 
     # Display results
     print("Predicted spending (next month) for User %d:" % user_id)
-    print(next_month_data[['category_id', 'category_name', 'predicted_amount']])
-    pass
+    print(output)
+    
+    # Save to file if output_file_path is provided
+    if output_file_path:
+        try:
+            with open(output_file_path, 'w') as f:
+                f.write(output)
+            print(f"\nPredictions saved to: {output_file_path}")
+        except Exception as e:
+            print(f"\nError saving to file: {str(e)}")
+    
+    return next_month_data

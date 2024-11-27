@@ -4,4 +4,35 @@
 # User ID is required from command line argument
 # Usage: ./run.sh -u <user_id>
 
-# TODO: to be implemented
+# Check if -u flag is provided
+while getopts "u:" opt; do
+    case $opt in
+        u) uid="$OPTARG";;
+        *) echo "Usage: $0 -u <uid>" >&2
+           exit 1;;
+    esac
+done
+
+# Validate that uid was provided
+if [ -z "$uid" ]; then
+    echo "Error: User ID (-u) is required"
+    echo "Usage: $0 -u <uid>"
+    exit 1
+fi
+
+# Execute commands in sequence
+echo "Starting workflow for user $uid..."
+
+echo "Running query..."
+python3 query.py -u "$uid" || { echo "Query failed"; exit 1; }
+
+echo "Running prediction..."
+python3 predict.py -u "$uid" || { echo "Prediction failed"; exit 1; }
+
+echo "Generating visualization..."
+python3 visualize.py || { echo "Visualization failed"; exit 1; }
+
+echo "Running cleanup..."
+./cleanup.sh || { echo "Cleanup failed"; exit 1; }
+
+echo "Workflow completed successfully"

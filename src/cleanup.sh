@@ -20,6 +20,7 @@ fi
 # Remove all files and subdirectories in the temp directory
 rm -rf "$TEMP_DIR"/*.csv
 rm -rf "$TEMP_DIR"/*.jpg
+rm -rf "$TEMP_DIR"/*.txt
 
 # Check if the removal was successful
 if [ $? -eq 0 ]; then

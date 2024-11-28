@@ -1,0 +1,5 @@
+expense_id,user_id,category_id,month,year,amount
+NULL,11,1,Mar,2023,171.71
+NULL,16,2,Jul,2023,946.83
+NULL,11,2,Sep,2023,933.28
+NULL,19,2,Feb,2024,466.44

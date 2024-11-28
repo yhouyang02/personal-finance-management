@@ -68,3 +68,6 @@ def line_chart(data):
 if __name__=="__main__":
     bar_chart(data)
     line_chart(data)
+    print("Data saved to ./temp/figure_barchart.jpg")
+    print("Data saved to ./temp/figure_linechart.jpg")
+    print("Visualization completed successfully")

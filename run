@@ -34,6 +34,9 @@ python3 predict.py -u "$uid" || { echo "Prediction failed"; exit 1; }
 echo "Generating visualization..."
 python3 visualize.py || { echo "Visualization failed"; exit 1; }
 
+echo "Pushing results..."
+python3 push.py || { echo "Push failed"; exit 1; }
+
 echo "Running cleanup..."
 ./cleanup.sh || { echo "Cleanup failed"; exit 1; }
 

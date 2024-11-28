@@ -69,7 +69,7 @@ def predict(user_id, expense_data_path, category_data_path, output_file_path=Non
         try:
             with open(output_file_path, 'w') as f:
                 f.write(output.to_string())
-            print(f"\Data saved to: {output_file_path}")
+            print(f"Data saved to: {output_file_path}")
         except Exception as e:
             print(f"\nError saving to file: {str(e)}")
     

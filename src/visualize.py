@@ -37,6 +37,7 @@ def bar_chart(data):
     plt.ylabel('Total Cost')
     plt.title(f'Total Cost by Category for {last_month} {curr_year}')
     plt.xticks(category_totals['category_name'])
+    plt.xticks(rotation=45)
     plt.tight_layout()
 
     plt.savefig(save_path, format="jpg")
@@ -56,6 +57,7 @@ def line_chart(data):
     plt.plot(month_totals['month'], month_totals['amount'], marker='o', linestyle='-', color='b')
     plt.title(f"Yearly Spendings for {curr_year}", fontsize=16)
     plt.xlabel("Month", fontsize=12)
+    plt.xticks(rotation=45)
     plt.ylabel("Spending", fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
